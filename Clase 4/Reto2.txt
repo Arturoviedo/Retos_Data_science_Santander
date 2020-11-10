@@ -1,0 +1,43 @@
+------------Reto 2 --------------
+
+-----------Consulta 1 ----------
+{
+ filter: {
+  name: 'Greg Powell'
+ }
+}
+
+----------Consulta 2------------
+{
+ filter: {
+  $or: [
+   {
+    name: 'Greg Powell'
+   },
+   {
+    name: 'Mercedes Tyler'
+   }
+  ]
+ }
+}
+---------Consulta 3 -------------
+{
+ project: {
+  num_mflix_comments: 1
+ },
+ sort: {
+  num_mflix_comments: -1
+ },
+ limit: 1
+}
+
+-------- Consulta 4 ----------
+{
+ project: {
+  title: 1
+ },
+ sort: {
+  num_mflix_comments: -1
+ },
+ limit: 5
+}
