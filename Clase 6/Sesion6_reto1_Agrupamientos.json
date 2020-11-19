@@ -1,0 +1,22 @@
+[{$match: {
+  property_type: "House"
+}}, {$match: {
+  bedrooms: {$gte:1}
+}}, {$addFields: {
+  costo_recamara: {$divide: ["$price","$bedrooms"]}
+}}, {$group: {
+  _id: "$address.country",
+  total_price: {
+    $sum: "$costo_recamara"
+  },
+  count: {
+    $sum:1
+  }
+}}, {$addFields: {
+  costo_por_recamara: {
+    $divide:["$total_price","$count"]
+  }
+}}, {$project: {
+  _id:1,
+  costo_por_recamara:1
+}}]

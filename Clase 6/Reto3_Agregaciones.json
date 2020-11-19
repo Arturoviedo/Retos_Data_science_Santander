@@ -1,0 +1,8 @@
+[{$match: {
+  amenities: {$in: ["Wifi","Ethernet","Internet"]}
+}}, {$group: {
+  _id: null,
+  total: {
+    $sum:1
+  }
+}}]
